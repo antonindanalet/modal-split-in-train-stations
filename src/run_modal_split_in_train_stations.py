@@ -163,8 +163,21 @@ def define_trip_legs_going_through_the_railway_station(df_etappen):
     manual_correction_streets(df_etappen, street_name='LAUPENSTRASSE')
     # Schanzenstrasse 1 ist not in the train station
     manual_correction_streets(df_etappen, street_name='SCHANZENSTR.')
+    # Save the unique points defining the train station for visualization
+    saving_unique_points(df_etappen)
     # Remove informations about X-Y coordinates and street name, not useful anymore
     df_etappen.drop(['Z_X', 'Z_Y', 'Z_Str'], axis=1, inplace=True)
+
+
+def saving_unique_points(df_etappen):
+    # Keep only point in the train station
+    df_train_station_only = df_etappen[df_etappen['through_railway_station'] == 1]
+    # Remove person identification, transport mode and activity. Keep only coordinates and strret name.
+    df_train_station_only = df_train_station_only[['Z_X', 'Z_Y', 'Z_Str']]
+    # Save every point only once
+    folder_path_output = Path('../data/output/')
+    df_train_station_only.drop_duplicates().to_csv(folder_path_output / 'unique_points_train_station.csv',
+                                                   index=False, sep=';', encoding='iso-8859-15')
 
 
 def manual_correction_streets(df_etappen, street_name):
