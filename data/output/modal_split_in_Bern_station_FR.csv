@@ -1,0 +1,30 @@
+﻿Moyen de transport principal in;Moyen de transport principal out;Parts
+Train;Train;0.1570404755225947
+Train;A pied;0.13797139656897087
+A pied;Train;0.1295162116263213
+Train;Transports publics routiers;0.11576249399165849
+Transports publics routiers;Train;0.11519910910635711
+Transports publics routiers;Transports publics routiers;0.08079281771810377
+A pied;Transports publics routiers;0.07991273696896481
+Transports publics routiers;A pied;0.07674246862385048
+A pied;;0.020740017293017225
+Transport individuel motorisé;;0.01447347898423759
+Train;Vélo (incl. vélo électrique);0.012549800751994095
+Train;;0.009902293923784325
+Vélo (incl. vélo électrique);Train;0.008781004073028639
+Vélo (incl. vélo électrique);;0.0061126147453525416
+Transports publics routiers;;0.005834445049726205
+Train;Transport individuel motorisé;0.0052866276724021916
+A pied;A pied;0.003413717220567694
+Autres;Train;0.003000043598246015
+Transport individuel motorisé;A pied;0.0028416147045937407
+Vélo (incl. vélo électrique);A pied;0.0024830856575547527
+Train;Autres;0.0023438766835976624
+A pied;Transport individuel motorisé;0.001928253061724851
+Transports publics routiers;Transport individuel motorisé;0.0018967419232360262
+Transport individuel motorisé;Train;0.0017894676252957309
+Transport individuel motorisé;Transports publics routiers;0.0007826603589995238
+Autres;Transport individuel motorisé;0.0007660303243381936
+Autres;Autres;0.0007624794914571891
+Autres;Transports publics routiers;0.0006949530478082755
+Transports publics routiers;Autres;0.0006790836822160739
