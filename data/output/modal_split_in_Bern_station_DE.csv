@@ -1,0 +1,30 @@
+﻿Verkehrsmittel in,Verkehrsmittel out,Anteile
+Eisenbahn,Eisenbahn,0.1570404755225947
+Eisenbahn,zu Fuss,0.13797139656897087
+zu Fuss,Eisenbahn,0.1295162116263213
+Eisenbahn,öffentl. Strassenverkehr,0.11576249399165849
+öffentl. Strassenverkehr,Eisenbahn,0.11519910910635711
+öffentl. Strassenverkehr,öffentl. Strassenverkehr,0.08079281771810377
+zu Fuss,öffentl. Strassenverkehr,0.07991273696896481
+öffentl. Strassenverkehr,zu Fuss,0.07674246862385048
+zu Fuss,,0.020740017293017225
+motorisierter Individualverkehr,,0.01447347898423759
+Eisenbahn,Velo (inkl. E-Bike),0.012549800751994095
+Eisenbahn,,0.009902293923784325
+Velo (inkl. E-Bike),Eisenbahn,0.008781004073028639
+Velo (inkl. E-Bike),,0.0061126147453525416
+öffentl. Strassenverkehr,,0.005834445049726205
+Eisenbahn,motorisierter Individualverkehr,0.0052866276724021916
+zu Fuss,zu Fuss,0.003413717220567694
+übrige,Eisenbahn,0.003000043598246015
+motorisierter Individualverkehr,zu Fuss,0.0028416147045937407
+Velo (inkl. E-Bike),zu Fuss,0.0024830856575547527
+Eisenbahn,übrige,0.0023438766835976624
+zu Fuss,motorisierter Individualverkehr,0.001928253061724851
+öffentl. Strassenverkehr,motorisierter Individualverkehr,0.0018967419232360262
+motorisierter Individualverkehr,Eisenbahn,0.0017894676252957309
+motorisierter Individualverkehr,öffentl. Strassenverkehr,0.0007826603589995238
+übrige,motorisierter Individualverkehr,0.0007660303243381936
+übrige,übrige,0.0007624794914571891
+übrige,öffentl. Strassenverkehr,0.0006949530478082755
+öffentl. Strassenverkehr,übrige,0.0006790836822160739

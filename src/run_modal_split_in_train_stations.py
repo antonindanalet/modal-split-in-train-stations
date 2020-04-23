@@ -1,9 +1,11 @@
 from utils_mtmc.get_mtmc_files import get_etappen
 import numpy as np
 from pathlib import Path
+import pandas as pd
 
 
 def run_modal_split_in_train_stations():
+    # Read the rwo data of the Mobility and Transport Microcensus (MTMC) 2015, with only the necessay columns
     df_etappen = get_etappen(2015, selected_columns=['HHNR',  # ID of the person
                                                      'WP',  # weight of the person
                                                      'WEGNR',  # ID of the trip
@@ -13,13 +15,50 @@ def run_modal_split_in_train_stations():
                                                      'Z_X',  # X-coordinate of the destination of the trip leg
                                                      'Z_Y',  # Y-coordinate of the destination of the trip leg
                                                      'Z_Str'])  # Street name of the destination of the trip leg
+    # Keep only the trip legs ("etappen" in German) that are going throug the train station of Bern
     df_etappen = define_trips_going_through_the_railway_station(df_etappen)
+    # Define the main transport mode of the trips
+    # from the start to the train station and
+    # from the train station to the end of the trip
     groups_in_and_out = define_the_main_transport_mode_per_trip(df_etappen)
     # Compute the weighted average
-    sum_of_all_weights = groups_in_and_out['WP'].sum()
+    output = compute_weighted_average(groups_in_and_out)
+    # Save the output as CSV files
+    save_as_csv(output)
+
+
+def save_as_csv(output):
+    # Adapt the output for the French CSV file
+    output.reset_index(level=0, inplace=True)  # Define the combination of transport means as a column (is an index)
+    output.rename(columns={'WP': 'Parts'}, inplace=True)  # Rename the column with percentages
+    output[['Moyen de transport principal in',
+            'Moyen de transport principal out']] = pd.DataFrame(output.f51300.values.tolist())
+    output.drop('f51300', axis=1, inplace=True)  # Remove the column with the pair of transport means
+    output = output.sort_values(by='Parts', ascending=False)  # Sort by percentages
+    output = output[['Moyen de transport principal in', 'Moyen de transport principal out', 'Parts']]  # Reorder columns
+    # Save the output as a CSV file (French)
     folder_path_output = Path('../data/output/')
-    groups_in_and_out.groupby(['f51300']).agg(lambda x: x.sum() / sum_of_all_weights)\
-        .to_csv(folder_path_output / 'modal_split_in_Bern_station.csv', sep=';')
+    output.to_csv(folder_path_output / 'modal_split_in_Bern_station_FR.csv', index=False, encoding='utf-8-sig')
+    # Translate the output to German
+    dict_fr_de = {'Autres': 'übrige',
+                  'Train': 'Eisenbahn',
+                  'Transports publics routiers': 'öffentl. Strassenverkehr',
+                  'Transport individuel motorisé': 'motorisierter Individualverkehr',
+                  'Vélo (incl. vélo électrique)': 'Velo (inkl. E-Bike)',
+                  'A pied': 'zu Fuss'}
+    output.replace({'Moyen de transport principal in': dict_fr_de,                  # Replace the transport modes by
+                    'Moyen de transport principal out': dict_fr_de}, inplace=True)  # German words
+    output.rename(columns={'Parts': 'Anteile',
+                           'Moyen de transport principal in': 'Verkehrsmittel in',
+                           'Moyen de transport principal out': 'Verkehrsmittel out'}, inplace=True)  # Rename columns
+    # Save the output as a CSV file in German
+    output.to_csv(folder_path_output / 'modal_split_in_Bern_station_DE.csv', index=False, encoding='utf-8-sig')
+
+
+def compute_weighted_average(groups_in_and_out):
+    sum_of_all_weights = groups_in_and_out['WP'].sum()
+    output = groups_in_and_out.groupby(['f51300']).agg(lambda x: x.sum() / sum_of_all_weights)
+    return output
 
 
 def define_the_main_transport_mode_per_trip(df_etappen):
