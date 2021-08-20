@@ -204,8 +204,12 @@ def define_trip_legs_going_through_the_railway_station(df_etappen):
     manual_correction_streets(df_etappen, street_name='SCHANZENSTR.')
     # Save the unique points defining the train station for visualization
     saving_unique_points(df_etappen)
-    # Remove informations about X-Y coordinates and street name, not useful anymore
+    # Remove information about X-Y coordinates and street name, not useful anymore
     df_etappen.drop(['Z_X', 'Z_Y', 'Z_Str'], axis=1, inplace=True)
+    print('Number of trip legs in the sample:',
+          len(df_etappen[df_etappen["through_railway_station"] == 1]))
+    print('Number of persons in the sample:',
+          df_etappen.HHNR[df_etappen["through_railway_station"] == 1].nunique())
 
 
 def saving_unique_points(df_etappen):

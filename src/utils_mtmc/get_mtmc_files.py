@@ -5,7 +5,7 @@ from pathlib import Path
 def get_etappen(year, selected_columns=None):
     folder_path_2015 = Path('../data/input/')
     if year == 2015:
-        with open(folder_path_2015 / 'etappen.csv', 'r') as etappen_file:
+        with open(folder_path_2015 / 'etappen.csv', 'r', encoding='iso-8859-1') as etappen_file:
             df_etappen = pd.read_csv(etappen_file,
                                      dtype={'HHNR': int,
                                             'W_AGGLO_GROESSE2012': int},

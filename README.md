@@ -3,6 +3,8 @@ This python script computes the modal split of trips going through Bern railway 
 
 The results have been published as an infographic in the magazine of the <a href="https://www.are.admin.ch/">Swiss Federal Office for Spatial Development (ARE)</a> "<a href="https://www.are.admin.ch/are/de/home/medien-und-publikationen/forum-raumentwicklung.html">Forum Raumentwicklung</a>"/"<a href="https://www.are.admin.ch/are/fr/home/media-et-publications/forum-du-developpement-territorial.html">Forum du développement territorial</a>"/"<a href="https://www.are.admin.ch/are/it/home/media-e-pubblicazioni/forum-sviluppo-territoriale.html">Forum sviluppo territoriale</a>" in its <a href="https://www.are.admin.ch/are/de/home/medien-und-publikationen/forum-raumentwicklung/vernetzte-mobilitat.html">edition about combined mobility on page 9 in German</a> and <a href="https://www.are.admin.ch/are/fr/home/media-et-publications/forum-du-developpement-territorial/mobilitecombinee.html">on page 43 in French</a>. It has also been published on Twitter in <a href="https://twitter.com/nicole_mathys/status/1305832391534141440">German</a> and <a href="https://twitter.com/AntoninDanalet/status/1306222523667841024">in French</a>.
 
+According to our definition of Bern railway station, 1444 trips are going through the railway station. These trips have been made by 706 single persons.
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for reproducing the result and understanding how it has been generated.
