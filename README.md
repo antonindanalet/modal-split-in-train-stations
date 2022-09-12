@@ -20,7 +20,3 @@ For it to produce the results, you also need the raw data of the Transport and M
 Please copy the file <em>etappen.csv</em> that you receive from the Federal Statistical Office in the folder "<a href="https://github.com/antonindanalet/modal-split-in-train-stations/tree/master/data/input">data/input</a>". Then run <em><a href="https://github.com/antonindanalet/modal-split-in-train-stations/blob/master/src/run_modal_split_in_train_stations.py">src/run_modal_split_in_train_stations.py</a></em>. 
 
 DO NOT commit or share in any way the CSV-files <em>etappen.csv</em>! These are personal data.
-
-## Contact
-
-Please don't hesitate to contact me if you have questions or comments about this code: antonin.danalet@are.admin.ch
